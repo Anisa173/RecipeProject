@@ -1,0 +1,10 @@
+<div class="col-md-7">
+  <app-recipe-list (recipeWasSelected)="recipe = $event" (added)="onAdded($event)"></app-recipe-list>
+</div>
+<div class=" col-md-5">
+  <app-recipe-detail *ngIf="recipe; else noRecipeSelected" [recipeCh]="recipe"
+    (change)="inputChange($event)"></app-recipe-detail>
+  <ng-template #noRecipeSelected>
+    <h3 class="warning">No recipe selected</h3>
+  </ng-template>
+</div>

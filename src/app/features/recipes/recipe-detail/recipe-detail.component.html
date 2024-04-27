@@ -1,0 +1,13 @@
+<div *ngIf="recipeCh$|async as recipe">
+  <h1>Recipe Details</h1>
+  <h3>{{recipeCh.name}}</h3>
+  <h3>{{recipeCh.description}}</h3>
+  <h3>{{recipeCh.imgUrl}}</h3>
+  <label for="rcp"></label>
+  <input type="text" id="rcp" name="rcp" placeholder="Recipe name" [(ngModel)]="name" #name>
+  <label for="rcp1"></label>
+  <textarea id="rcp1" name="rcp1" placeholder="Recipe description" [(ngModel)]="description" #description></textarea>
+  <label for="rcp2"></label>
+  <input type="text" id="rcp2" name="rcp2" placeholder="Recipe imageUrl" [(ngModel)]="imgUrl" #imgUrl>
+  <button type="button" class="btn btn-default" (click)="editRecipedata(recipeCh)">Update Item</button>
+</div>
