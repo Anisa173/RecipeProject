@@ -9,7 +9,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RecipeModel } from '../../../shared/models/recipe.model';
-import { HttpParams } from '@angular/common/http';
 import { ReceptServiceService } from 'src/app/shared/services/recept-service.service';
 
 @Component({
@@ -37,9 +36,7 @@ export class RecipeListComponent implements OnInit, OnChanges {
 
   getRecipes() {
     //posts?_page=1&_per_page=25
-    let params = new HttpParams();
-    params = params.append('_page', '2');
-    params = params.append('_per_page', '10');
+
     this.receptService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
     });

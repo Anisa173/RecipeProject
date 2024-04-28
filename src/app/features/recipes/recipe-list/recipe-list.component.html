@@ -1,9 +1,19 @@
 <div class="row">
   <div class="col-xs-12">
-    <!--    <input class="form-control" (change)="inputChange($event)">-->
-    <input class="form-control" #inputElement>
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="name" #name>
+
+      <label for="desc">Description:</label>
+      <input type="text" id="desc" [(ngModel)]="description" #description>
+
+      <label for="imgUrl">Image URL:</label>
+      <input type="text" id="imgUrl" [(ngModel)]="imgUrl" #imgUrl>
+    </div>
     <br>
-    <button class="btn btn-success" (click)="add()">New Recipe</button>
+    <button class="btn btn-success" (click)="createRecept(name.name,description.value,imgUrl.value)">Create New
+      Recipe</button>
   </div>
 </div>
 <br>

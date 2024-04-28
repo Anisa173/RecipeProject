@@ -66,6 +66,8 @@ export class ReceptServiceService {
       .pipe(map((recipe) => this.convertToEntity(recipe)));
   }
   updateRecipe(recipe: RecipeModel): Observable<RecipeModel> {
-    return this.httpCl.put<ReceptModelDto>('${this.url}/${id}', recipe);
+    return this.httpCl
+      .put<ReceptModelDto>('${this.url}/${id}', recipe)
+      .pipe(map((recipe) => this.convertToEntity(recipe)));
   }
 }

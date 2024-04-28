@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { LoggingService } from './shared/services/logging.service';
 import { AccountsService } from './shared/services/accounts.service';
 import { ReceptServiceService } from './shared/services/recept-service.service';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +35,9 @@ import { ReceptServiceService } from './shared/services/recept-service.service';
     UnlessDirective,
     ShortenPipe,
     FilterPipe,
+    PageNotFoundComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [LoggingService, AccountsService, ReceptServiceService],
   bootstrap: [AppComponent],
 })
