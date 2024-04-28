@@ -14,7 +14,7 @@ interface ReceptModelDto {
   providedIn: 'root',
 })
 export class ReceptServiceService {
-  private url = 'http://localhost:3000/recipes';
+  private url = 'http://localhost:3000/assets/servers/db.json/recipes';
   constructor(private httpCl: HttpClient) {}
 
   deleteRecept(id: string): Observable<void> {

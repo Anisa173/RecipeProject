@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './features/header/header.component';
 import { RecipesComponent } from './features/recipes/recipes.component';
@@ -20,6 +21,8 @@ import { AccountsService } from './shared/services/accounts.service';
 import { ReceptServiceService } from './shared/services/recept-service.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthService } from './shared/services/auth.service';
+import { AuthInterceptor } from './auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +40,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FilterPipe,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
-  providers: [LoggingService, AccountsService, ReceptServiceService],
+  imports: [
+    BrowserModule,
+    AuthModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+  ],
+  providers: [
+    LoggingService,
+    AccountsService,
+    ReceptServiceService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
